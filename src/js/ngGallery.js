@@ -159,11 +159,12 @@
                       confirmDeleteWatch = scope.$watch('confirmDelete', function (newValue, oldValue) {
                           if (angular.isDefined(newValue) && newValue === true) {
                             if (scope.images.splice(i, 1)) {
-                                if (scope.images.length == 0) {
-                                    return scope.closeGallery();
-                                }
+                                // if (scope.images.length == 0) {
+                                //     return scope.closeGallery();
+                                // }
+                                scope.closeGallery();
                                 scope.confirmDelete = false;
-                                scope.changeImage((scope.images.length - 1));
+                                //scope.changeImage((scope.images.length - 1));
                             }
                         }
                       });
@@ -172,10 +173,11 @@
                     if (confirm('Are you sure you want to delete ' + (image.name || 'this image') + '?')) {
                         scope.onDelete({ image: image }); // onDelete callback
                         if (scope.images.splice(i, 1)) {
-                            if (scope.images.length == 0) {
-                                return scope.closeGallery();
-                            }
-                            scope.changeImage((scope.images.length - 1));
+                            // if (scope.images.length == 0) {
+                            //     return scope.closeGallery();
+                            // }
+                            scope.closeGallery();
+                            //scope.changeImage((scope.images.length - 1));
                         }
                     }
                   }
