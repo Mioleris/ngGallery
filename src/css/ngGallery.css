@@ -34,6 +34,29 @@ img.ng-thumb {
   float: left;
   position: relative; 
 }
+.ng-gallery > .ng-gallery-thumbs > .image-limit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+}
+.ng-gallery > .ng-gallery-thumbs > .image-limit > div {
+  display: table;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.ng-gallery > .ng-gallery-thumbs > .image-limit > div > span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 10vmin;
+  width: 100%;
+  height: 100%;
+}
 .ng-gallery > .ng-gallery-thumbs:hover .delete-icon {
   visibility: visible;
   opacity: 1;

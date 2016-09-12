@@ -30,9 +30,12 @@
         // Set the default template
         $templateCache.put(template_url,
             '<div class="{{ baseClass }}">' +
-            '  <div ng-repeat="i in images" class="ng-gallery-thumbs">' +
+            '  <div ng-repeat="(key, i) in images | limitTo: limit" class="ng-gallery-thumbs" ng-style="{\'width\': i.width}">' +
             '    <a class="delete-icon" uib-tooltip="{{ deleteTooltipText }}" ng-click="deleteNgGalleryImage($index)" ng-show="showDeleteIcons()"><i class="fa fa-times"></i></a>' +
             '    <img ng-src="{{ i.thumb }}" class="{{ thumbClass }}" ng-click="openGallery($index)" alt="Image {{ $index + 1 }}" />' +
+            '    <div ng-click="openGallery($index)" class="image-limit" ng-if="limit && images.length > limit && (key + 1) == limit">' +
+            '       <div><span>{{images.length - limit}}+</span></div>' +
+            '    </div>' +
             '  </div>' +
             '</div>' +
             '<div class="ng-overlay" ng-show="opened">' +
@@ -61,6 +64,7 @@
         return {
             restrict: 'EA',
             scope: {
+                limit: '@',
                 images: '=',
                 thumbsNum: '@',
                 hideOverflow: '=',
